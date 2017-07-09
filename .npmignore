@@ -1,0 +1,6 @@
+dist/**/*.spec.ts
+dist/**/*.spec.d.ts
+
+tsconfig.json
+lib/
+spec/

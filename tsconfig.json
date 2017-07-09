@@ -1,0 +1,19 @@
+{
+    "version": "1.6.2",
+    "compilerOptions": {
+        "target": "es5",
+        "module": "umd",
+        "moduleResolution": "node",
+        "declaration": true,
+        "rootDir": ".",
+        "outDir": "dist/",
+        "strictNullChecks": true
+    },
+    "files": [
+      "main.ts"
+    ],
+    "include": [
+      "lib/**/*.ts",
+      "spec/**/*.ts"
+    ]
+}

@@ -1,0 +1,42 @@
+{
+  "name": "@chordinate/chordpro-parser",
+  "version": "0.1.0",
+  "description": "An extendable ChordPro parser",
+  "author": {
+    "name": "Michaël Jacobs",
+    "email": "michael.jacobs92@gmail.com"
+  },
+  "main": "dist/main.js",
+  "types": "dist/main",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chordinate-js/chordpro-parser"
+  },
+  "bugs": {
+    "url": "https://github.com/chordinate-js/chordpro-parser/issues"
+  },
+  "keywords": [
+    "chordpro",
+    "parser"
+  ],
+  "dependencies": {
+    "@types/lodash": "^4.14.68",
+    "lodash": "^4.17.4"
+  },
+  "devDependencies": {
+    "@types/jasmine": "^2.5.53",
+    "@types/node": "^8.0.9",
+    "jasmine": "^2.6.0",
+    "typescript": "^2.4.1"
+  },
+  "scripts": {
+    "clean:dist": "rm -rf ./dist",
+    "clean": "npm run clean:dist",
+    "build:ts": "tsc",
+    "build:watch": "tsc --watch",
+    "build": "npm run clean && npm run build:ts",
+    "test": "npm run build && jasmine",
+    "prepublish": "npm run build"
+  },
+  "license": "MIT"
+}
