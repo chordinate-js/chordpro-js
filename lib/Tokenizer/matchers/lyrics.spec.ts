@@ -1,3 +1,4 @@
+import { Token } from '../Tokenizer';
 import match, { createMatcher } from './lyrics';
 
 describe('Lyrics matcher', () => {
@@ -67,7 +68,7 @@ describe('Lyrics matcher', () => {
     const inlineCommentRegex = new RegExp('\\/\\*\\s*([\\S\\s]*?)\\s*\\*\\/');
 
     const combinedRegex = new RegExp(inlineDirectiveRegex.source + '|' + inlineCommentRegex.source, 'g');
-    const customMatcher = createMatcher(combinedRegex, (match) => {
+    const customMatcher = createMatcher(combinedRegex, (match, offset): Token => {
       const comment = match[5] && match[5].trim();
       if (typeof comment !== 'undefined') {
         return { type: 'comment', value: comment };
@@ -76,7 +77,7 @@ describe('Lyrics matcher', () => {
       const directiveName = match[1].trim();
       const directiveValue = match[4].trim();
 
-      return { type: 'inline_directive', name: directiveName, value: directiveValue };
+      return <any> { type: 'inline_directive', name: directiveName, value: directiveValue };
     });
 
     const tokens = customMatcher('This is a | voices: 3 |more advanced /* ignore this inline comment */example.');
