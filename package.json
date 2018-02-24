@@ -6,8 +6,8 @@
     "name": "Michaël Jacobs",
     "email": "michael.jacobs92@gmail.com"
   },
-  "main": "dist/main.js",
-  "types": "dist/main",
+  "main": "dist/chordpro",
+  "types": "dist/chordpro.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/chordinate-js/chordpro-js"
@@ -20,22 +20,28 @@
     "parser"
   ],
   "dependencies": {
-    "@types/lodash": "^4.14.68",
     "lodash": "^4.17.4"
   },
   "devDependencies": {
     "@types/jasmine": "^2.5.53",
+    "@types/lodash": "^4.14.68",
     "@types/node": "^8.0.9",
     "jasmine": "^2.6.0",
+    "npm-run-all": "^4.1.2",
+    "renamer": "^0.6.1",
+    "rollup": "^0.56.2",
     "typescript": "^2.4.1"
   },
   "scripts": {
     "clean:dist": "rm -rf ./dist",
     "clean": "npm run clean:dist",
-    "build:ts": "tsc",
+    "build": "npm-run-all clean build:mjs build:cjs build:umd",
+    "build:mjs": "tsc -d && renamer --regex --find '\\.js$' --replace '.mjs' './dist/**/*.js' && find ./dist -type file -name '*.mjs' -exec sed -i '' -E \"s~from '\\.\/([^']*)'~from './\\1.mjs'~g\" '{}' \\;",
+    "build:cjs": "tsc -m commonjs",
+    "build:umd": "rollup -i dist/chordpro.mjs -o dist/chordpro.umd.js -f umd --name ChordProJS --globals lodash:_",
+    "build:test": "tsc -p tsconfig.test.json",
     "build:watch": "tsc --watch",
-    "build": "npm run clean && npm run build:ts",
-    "test": "npm run build && jasmine",
+    "test": "npm run build:test && jasmine",
     "prepublish": "npm run build"
   },
   "license": "MIT"

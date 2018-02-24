@@ -1,6 +1,3 @@
-dist/**/*.spec.ts
-dist/**/*.spec.d.ts
-
 tsconfig.json
-lib/
+tsconfig.test.json
 spec/

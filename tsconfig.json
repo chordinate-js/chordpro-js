@@ -1,19 +1,11 @@
 {
-    "version": "1.6.2",
-    "compilerOptions": {
-        "target": "es5",
-        "module": "umd",
-        "moduleResolution": "node",
-        "declaration": true,
-        "rootDir": ".",
-        "outDir": "dist/",
-        "strictNullChecks": true
-    },
-    "files": [
-      "main.ts"
-    ],
-    "include": [
-      "lib/**/*.ts",
-      "spec/**/*.ts"
-    ]
+  "compilerOptions": {
+    "target": "es2017",
+    "module": "es2015",
+    "outDir": "./dist",
+    "strictNullChecks": true
+  },
+  "files": [
+    "./lib/chordpro.ts"
+  ]
 }

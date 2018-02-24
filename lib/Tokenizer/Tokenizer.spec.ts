@@ -1,5 +1,4 @@
-import Tokenizer from './Tokenizer';
-import { MatcherInterface } from './matchers';
+import { Tokenizer } from './Tokenizer';
 
 const createSpy = jasmine.createSpy;
 

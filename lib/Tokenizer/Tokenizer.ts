@@ -1,4 +1,4 @@
-import { MatcherInterface } from './matchers';
+import { TokenMatcherInterface } from './matchers';
 import { EOL } from 'os';
 
 export interface DirectiveToken {
@@ -29,18 +29,18 @@ export interface NewlineToken {
 export type Token = DirectiveToken | LyricToken | ChordToken | CommentToken | NewlineToken;
 
 export interface MatcherCallback {
-  fn: MatcherInterface,
+  fn: TokenMatcherInterface,
   priority: number,
 };
 
-class Tokenizer {
+export class Tokenizer {
   private _matchers: MatcherCallback[] = [];
 
   get matchers(): MatcherCallback[] {
     return this._matchers.slice();
   }
 
-  addMatcher(fn: MatcherInterface, priority: number = 0): void {
+  addMatcher(fn: TokenMatcherInterface, priority: number = 0): void {
     const registeredMatchers = this._matchers;
     const callbackObj: MatcherCallback = { fn, priority };
 
@@ -55,7 +55,7 @@ class Tokenizer {
     registeredMatchers.push(callbackObj);
   }
 
-  removeMatcher(fn: MatcherInterface, priority?: number): boolean {
+  removeMatcher(fn: TokenMatcherInterface, priority?: number): boolean {
     const registeredMatchers = this._matchers;
 
     let wasRemoved = false;
@@ -135,5 +135,3 @@ class Tokenizer {
     return false;
   }
 }
-
-export default Tokenizer;

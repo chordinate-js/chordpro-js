@@ -1,4 +1,4 @@
-import RuleSet from './RuleSet';
+import { RuleSet } from './RuleSet';
 
 // @link http://www.chordpro.org/chordpro/index.html
 const createV4_6RuleSet = (): RuleSet => {
@@ -45,4 +45,3 @@ const createV4_6RuleSet = (): RuleSet => {
 };
 
 export const v4_6 = createV4_6RuleSet();
-export default v4_6;

@@ -1,4 +1,4 @@
-import RuleSet, { Rule } from './RuleSet';
+import { RuleSet, Rule } from './RuleSet';
 
 describe('Rule set', function () {
   it('accepts metadata rules', function () {

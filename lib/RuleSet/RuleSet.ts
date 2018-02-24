@@ -10,7 +10,7 @@ export interface Rule {
   alias?: string[],
 };
 
-class RuleSet {
+export class RuleSet {
   private _rules: Rule[];
 
   constructor(rules: Rule[] = []) {
@@ -39,5 +39,3 @@ class RuleSet {
     });
   }
 }
-
-export default RuleSet;
