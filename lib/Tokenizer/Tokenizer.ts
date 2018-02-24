@@ -1,5 +1,6 @@
 import { TokenMatcherInterface } from './matchers';
-import { EOL } from 'os';
+
+const EOL = /\r\n|\r|\n/g;
 
 export interface DirectiveToken {
   type: 'directive';
